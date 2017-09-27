@@ -1,13 +1,17 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-header danger>
+     <ion-card text-center class="imond" style="padding: 0px 0px 0px 0px;">
+        <img src="../assets/images/logo.png" class="custom-avatar" />
+        <h2>BRINDLEE</h2>
+        <p>Have some p tag here</p>
+     </ion-card>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+    </ion-header>
+
+   <ion-content>
+
+    <ion-list no-lines>
+      <button ion-item icon-right menuClose *ngFor="let p of pages" (click)="openPage(p)" detail-push>
         {{p.title}}
       </button>
     </ion-list>
