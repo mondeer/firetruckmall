@@ -1,7 +1,7 @@
 <ion-header>
 
   <expandable-header [scrollArea]="mycontent" headerHeight="125">
-    
+    <ion-title>Search Truck</ion-title>
     <ion-item>
       <ion-label>
         <ion-icon name="search"></ion-icon>
@@ -27,7 +27,15 @@
 </ion-header>
 
 <ion-content fullscreen #mycontent>
-
+  <ion-fab bottom left>
+    <button ion-fab color="danger"><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab color="dark"><ion-icon name="call"></ion-icon></button>
+      <button ion-fab color="dark"><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-fab color="dark"><ion-icon name="logo-vimeo"></ion-icon></button>
+      <button ion-fab color="dark"><ion-icon name="logo-googleplus"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
   <ion-card *ngFor="let truck of trucks" tappable>
     <img [src]="truck.pic">
       <h2>{{truck.name}} </h2>
@@ -35,14 +43,13 @@
       <ion-row>
         <ion-col>
           <button ion-button icon-left clear small>
-            <ion-icon name="dollar"></ion-icon>
+            <ion-icon name="pricetag"></ion-icon>
             <div>{{truck.price}}</div>
           </button>
         </ion-col>
         <ion-col>
           <button ion-button icon-left clear small>
-            <ion-icon name="text"></ion-icon>
-            <div>4 Comments</div>
+            <div class="imond">{{truck.warranty}}</div>
           </button>
         </ion-col>
       </ion-row>
