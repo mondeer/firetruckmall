@@ -30,7 +30,7 @@
   <ion-fab bottom left>
     <button ion-fab color="danger"><ion-icon name="add"></ion-icon></button>
     <ion-fab-list side="top">
-      <button ion-fab color="dark"><ion-icon name="call"></ion-icon></button>
+      <button ion-fab color="dark"><a href="tel:+1-1800-555-5555"><ion-icon name="call"></ion-icon></a></button>
       <button ion-fab color="dark"><ion-icon name="logo-twitter"></ion-icon></button>
       <button ion-fab color="dark"><ion-icon name="logo-vimeo"></ion-icon></button>
       <button ion-fab color="dark"><ion-icon name="logo-googleplus"></ion-icon></button>
@@ -48,8 +48,8 @@
           </button>
         </ion-col>
         <ion-col>
-          <button ion-button round icon-left clear small>
-            <div>{{truck.warranty}}</div>
+          <button ion-button color='danger' round icon-left small>
+            {{truck.warranty}}
           </button>
         </ion-col>
       </ion-row>
