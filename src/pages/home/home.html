@@ -27,7 +27,7 @@
   <ion-fab bottom right>
     <button ion-fab color="danger"><ion-icon name="add"></ion-icon></button>
     <ion-fab-list side="top">
-      <button ion-fab color="dark"><a  ng-href="tel:+1(256)457-2035"><ion-icon name="call"></ion-icon></a></button>
+      <button ion-fab color="dark" (click)=launchDialer('+1(256)457-2035')><ion-icon name="call"></ion-icon></button>
       <button ion-fab color="dark"><ion-icon name="logo-twitter"></ion-icon></button>
       <button ion-fab color="dark"><ion-icon name="logo-vimeo"></ion-icon></button>
       <button ion-fab color="dark"><ion-icon name="logo-googleplus"></ion-icon></button>
