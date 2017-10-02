@@ -20,8 +20,10 @@
   </ion-fab>
   <ion-card *ngFor="let truck of trucks" tappable>
     <img [src]="truck.pic">
-      <h2>{{truck.name}} </h2>
-      <p>{{truck.pump}}, {{truck.tank}}, {{truck.category}} </p>
+      <ion-row>
+        <h2>{{truck.name}} </h2>
+        <p class="imondp">{{truck.pump}}, {{truck.tank}}, {{truck.category}} </p>
+      </ion-row>
       <ion-row>
         <ion-col>
           <button ion-button icon-left clear small>
@@ -30,7 +32,7 @@
           </button>
         </ion-col>
         <ion-col>
-          <button ion-button color='danger' round icon-left small>
+          <button ion-button color='danger' round icon-left class="imondcap" small>
             {{truck.warranty}}
           </button>
         </ion-col>

@@ -1,4 +1,4 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" type="overlay">
   <ion-header danger>
      <ion-card text-center class="imond" style="padding: 0px 0px 0px 0px;">
         <img src="../assets/images/logo.png" class="custom-avatar" />
@@ -10,8 +10,8 @@
 
    <ion-content>
 
-    <ion-list no-lines>
-      <button ion-item icon-right menuClose *ngFor="let p of pages" (click)="openPage(p)" detail-push>
+    <ion-list no-lines transparent>
+      <button class="trans" ion-item icon-right menuClose *ngFor="let p of pages" (click)="openPage(p)" detail-push>
         {{p.title}}
       </button>
     </ion-list>
