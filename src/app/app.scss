@@ -14,27 +14,33 @@
   font-family: 'Pangolin';
   font-style: normal;
   font-weight: 200;
-  src: local('Pangolin Regular'), local('Pangolin-Regular'), url(https://fonts.gstatic.com/s/pangolin/v2/S-1BH_7IXzlH4pDCWaJVlPesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+  src: url('../assets/fonts/fjallaone.woff2') format('woff2');
 }
 *{
 font-family: 'Pangolin';
 }
 
 ion-menu{
-    ion-content{
-        background-color:rgba(224,222,225,1) !important;
+  
+    ion-header {
+        display: block;
+        background: url('../assets/images/bmfa.jpg');
+        overflow: hidden;
+        color: white;
+        ion-item{
+            background-color:rgba(0,0,0,.6) !important;
+            color: white;
+        }
     }
 }
-    
-ion-header {
-    display: block;
-    background: url('../assets/images/bmfa.jpg');
-    overflow: hidden;
+
+ion-content{
+    background-color:rgba(224,222,225,1) !important;
 }
 
 .imondcap{
     text-transform: capitalize;
+    font-size: 12px;
 }
 .imondp{
     color:red;
@@ -59,7 +65,6 @@ ion-header {
 
 .imond {
     background: rgba(0, 0, 0, 0.2);
-    color: #ffffff;
 }
 .custom-avatar {
   height: 30vw;
@@ -69,4 +74,8 @@ ion-header {
   display: inline-block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.imondwhite{
+    color:white;
 }
