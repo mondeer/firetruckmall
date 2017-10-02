@@ -29,14 +29,14 @@ export class MyApp {
       { title: 'Contact Us', component: ContactPage }
     ];
 
-  } list
+  }
 
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-      this.statusBar.backgroundColorByHexString('#ffffff');
+      this.statusBar.backgroundColorByHexString('#B40000');
       this.splashScreen.hide();
     });
   }
