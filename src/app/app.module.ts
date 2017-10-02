@@ -8,6 +8,8 @@ import { CallNumber } from '@ionic-native/call-number';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { TabsPage } from '../pages/tabs/tabs';
+import { ContactPage } from '../pages/contact/contact';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,7 +19,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     ListPage,
-    ExpandableHeaderComponent
+    ExpandableHeaderComponent,
+    TabsPage,
+    ContactPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    TabsPage,
+    ContactPage
   ],
   providers: [
     StatusBar,
