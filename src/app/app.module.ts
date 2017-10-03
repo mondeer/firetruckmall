@@ -27,6 +27,7 @@ import { Truck } from '../providers/truck/truck';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

@@ -36,7 +36,7 @@ export class Truck {
   filterItems(searchTerm) {
 
     return this.trucks.filter((truck) => {
-      return truck.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+      return truck.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
     });
 
   }
