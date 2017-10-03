@@ -13,6 +13,7 @@ import { ContactPage } from '../pages/contact/contact';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { TruckProvider } from '../providers/truck/truck';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     CallNumber,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    TruckProvider
   ]
 })
 export class AppModule {}
