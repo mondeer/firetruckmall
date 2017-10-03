@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { ExpandableHeaderComponent } from '../components/expandable-header/expandable-header';
 
@@ -13,7 +14,7 @@ import { ContactPage } from '../pages/contact/contact';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { TruckProvider } from '../providers/truck/truck';
+import { Truck } from '../providers/truck/truck';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { TruckProvider } from '../providers/truck/truck';
     SplashScreen,
     CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    TruckProvider
+    Truck
   ]
 })
 export class AppModule {}

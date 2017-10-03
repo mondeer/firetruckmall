@@ -2,17 +2,43 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the TruckProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
-export class TruckProvider {
-
+export class Truck {
+  trucks: any;
   constructor(public http: Http) {
-    console.log('Hello TruckProvider Provider');
+    this.trucks = [
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+      { pic: 'assets/images/truck.png', price: '23,000', name: '2015 Rosenbauer Commander 4000 Demo Rescue Pumper', brand: 'Hale', pump: '1500 GPM', tank: '1000 Gallon', category: 'used pumpers and engines', mileage: 'under 15000', region: 'North-west USA', warranty: 'Truck with warranty' },
+
+    ]
+  }
+
+  filterItems(searchTerm) {
+
+    return this.trucks.filter((truck) => {
+      return truck.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+    });
+
   }
 
 }
