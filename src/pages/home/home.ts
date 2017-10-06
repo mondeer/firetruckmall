@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, ModalController, ViewController, App, NavParams } from 'ionic-angular';
 import { FormControl } from '@angular/forms';
 import { CallNumber } from '@ionic-native/call-number';
 import { Truck } from '../../providers/truck/truck';
@@ -17,7 +17,13 @@ export class HomePage {
   trucks: any;
   searching: any = false;
 
-  constructor(public navCtrl: NavController, private callNumber: CallNumber, public truckService: Truck) {
+  constructor(
+    public navCtrl: NavController, 
+    private callNumber: CallNumber, 
+    public truckService: Truck,
+    public viewCtrl: ViewController,
+    public app: App,
+    public modalCtrl: ModalController) {
     this.searchControl = new FormControl();
   }
 
@@ -43,6 +49,10 @@ export class HomePage {
 
     this.trucks = this.truckService.filterItems(this.searchTerm);
 
+  }
+  support() {
+    this.app.getRootNav().push('SupportPage');
+    this.viewCtrl.dismiss();
   }
 
   launchDialer(n: string) {

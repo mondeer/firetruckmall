@@ -1,12 +1,23 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
+
+import { Events, MenuController, Nav, Platform } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+
+import { Storage } from '@ionic/storage';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ContactPage } from '../pages/contact/contact';
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
+import { AboutusPage } from '../pages/aboutus/aboutus';
+import { AccountPage } from '../pages/account/account';
+import { SupportPage } from '../pages/support/support';
+import { TutorialPage } from '../pages/tutorial/tutorial';
+
+import { UserData } from '../providers/user-data/user-data';
 
 export interface PageInterface {
   title: string;
@@ -20,26 +31,65 @@ export interface PageInterface {
 }
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.template.html'
 })
-export class MyApp {
+export class BmfaApp {
+  // the root nav is a child of the root app component
+  // @ViewChild(Nav) gets a reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
 
-  rootPage = TabsPage;
+  // List of pages that can be navigated to from the left menu
+  // the left menu only works after login
+  // the login page disables the left menu
+  appPages: PageInterface[] = [
+    { title: 'Home', name: 'TabsPage', component: TabsPage, tabComponent: HomePage, index: 0, icon: 'home' },
+    { title: 'Support', name: 'TabsPage', component: TabsPage, tabComponent: SupportPage, index: 1, icon: 'help' },
+    { title: 'Contact', name: 'TabsPage', component: TabsPage, tabComponent: ContactPage, index: 2, icon: 'contacts' },
+    { title: 'About', name: 'TabsPage', component: TabsPage, tabComponent: AboutusPage, index: 3, icon: 'information-circle' }
+  ];
+  loggedInPages: PageInterface[] = [
+    { title: 'Account', name: 'AccountPage', component: AccountPage, icon: 'person' },
+    { title: 'Support', name: 'SupportPage', component: SupportPage, icon: 'help' },
+    { title: 'Logout', name: 'TabsPage', component: TabsPage, icon: 'log-out', logsOut: true }
+  ];
+  loggedOutPages: PageInterface[] = [
+    { title: 'Login', name: 'LoginPage', component: LoginPage, icon: 'log-in' },
+    { title: 'Support', name: 'SupportPage', component: SupportPage, icon: 'help' },
+    { title: 'Signup', name: 'SignupPage', component: SignupPage, icon: 'person-add' }
+  ];
+  rootPage: any;
 
-  pages: Array<{title: string, component: any}>;
+  constructor(
+    public events: Events,
+    public userData: UserData,
+    public menu: MenuController,
+    public platform: Platform,
+    public storage: Storage,
+    public splashScreen: SplashScreen,
+    public statusBar: StatusBar
+  ) {
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
-    
+    // Check if the user has already seen the tutorial
+    this.storage.get('hasSeenTutorial')
+      .then((hasSeenTutorial) => {
+        if (hasSeenTutorial) {
+          this.rootPage = TabsPage;
+        } else {
+          this.rootPage = TutorialPage;
+        }
+        this.platformReady()
+      });
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Sell Truck', component: HomePage },
-      { title: 'Buy Truck', component: ListPage },
-      { title: 'Contact Us', component: ContactPage }
-    ];
+    // load the conference data
+    // confData.load();
 
+    // decide which menu items should be hidden by current login status stored in local storage
+    this.userData.hasLoggedIn().then((hasLoggedIn) => {
+      this.enableMenu(hasLoggedIn === true);
+    });
+    this.enableMenu(true);
+
+    this.listenToLoginEvents();
   }
 
   initializeApp() {
@@ -52,7 +102,7 @@ export class MyApp {
     });
   }
 
-  openPage(page, index) {
+  openPage(page: PageInterface) {
     let params = {};
 
     // the nav component was found using @ViewChild(Nav)
@@ -73,5 +123,57 @@ export class MyApp {
         console.log(`Didn't set nav root: ${err}`);
       });
     }
+
+    if (page.logsOut === true) {
+      // Give the menu time to close before changing to logged out
+      this.userData.logout();
+    }
+  }
+
+  openTutorial() {
+    this.nav.setRoot(TutorialPage);
+  }
+
+  listenToLoginEvents() {
+    this.events.subscribe('user:login', () => {
+      this.enableMenu(true);
+    });
+
+    this.events.subscribe('user:signup', () => {
+      this.enableMenu(true);
+    });
+
+    this.events.subscribe('user:logout', () => {
+      this.enableMenu(false);
+    });
+  }
+
+  enableMenu(loggedIn: boolean) {
+    this.menu.enable(loggedIn, 'loggedInMenu');
+    this.menu.enable(!loggedIn, 'loggedOutMenu');
+  }
+
+  platformReady() {
+    // Call any initial plugins when ready
+    this.platform.ready().then(() => {
+      this.splashScreen.hide();
+    });
+  }
+
+  isActive(page: PageInterface) {
+    let childNav = this.nav.getActiveChildNavs()[0];
+
+    // Tabs are a special case because they have their own navigation
+    if (childNav) {
+      if (childNav.getSelected() && childNav.getSelected().root === page.tabComponent) {
+        return 'primary';
+      }
+      return;
+    }
+
+    if (this.nav.getActive() && this.nav.getActive().name === page.name) {
+      return 'primary';
+    }
+    return;
   }
 }
