@@ -26,12 +26,13 @@ ion-menu{
         display: block;
         background: url('../assets/images/bmfa.jpg');
         overflow: hidden;
-        color: white;
-        ion-item{
-            background-color:rgba(0,0,0,.6) !important;
-            color: white;
-        }
+        color: white;   
     }
+    ion-item{
+        background-color:rgba(0,0,0,.6) !important;
+        color: white;
+    }
+   
 }
 
 ion-content{
