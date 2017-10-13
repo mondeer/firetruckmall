@@ -1,0 +1,40 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "ke.co.imond.bmfa"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "ke.co.imond.bmfa"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "ke.co.imond.bmfa"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "ke.co.imond.bmfa"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "ke.co.imond.bmfa"
+        },
+        "mx.ferreyra.callnumber": {
+            "PACKAGE_NAME": "ke.co.imond.bmfa"
+        },
+        "cordova-plugin-fingerprint-aio": {
+            "PACKAGE_NAME": "ke.co.imond.bmfa"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "ke.co.imond.bmfa"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-add-swift-support": {
+            "PACKAGE_NAME": "ke.co.imond.bmfa"
+        }
+    }
+}
